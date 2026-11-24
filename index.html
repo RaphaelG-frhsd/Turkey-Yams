@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Kanye Breast | CSS Live Demo</title>
+   <!--
+  “Thanksgiving Turkey” by Álvaro Montoro
+  https://codepen.io/alvaromontoro/pen/GRjKBvp
+  Original HTML and CSS, restyled with a striped sweater, collar,
+  hair, gold chain, microphone, a teddy bear head and a title.
+
+  MIT License
+  Copyright (c) 2020 Álvaro Montoro
+
+  Permission is hereby granted, free of charge, to any person obtaining
+  a copy of this software and associated documentation files (the
+  "Software"), to deal in the Software without restriction, including
+  without limitation the rights to use, copy, modify, merge, publish,
+  distribute, sublicense, and/or sell copies of the Software, and to
+  permit persons to whom the Software is furnished to do so, subject to
+  the following conditions:
+
+  The above copyright notice and this permission notice shall be
+  included in all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+   <style>
+      html,
+      body {
+         overflow: hidden;
+         background: #fee;
+      }
+
+      /* TITLE | fixed at the top center of the window */
+      .title {
+         position: fixed;
+         top: 2vmin;
+         left: 0;
+         right: 0;
+         margin: 0;
+         text-align: center;
+         font: 900 6.5vmin/1 Impact, "Arial Black", sans-serif;
+         letter-spacing: 0.4vmin;
+         text-transform: uppercase;
+         color: #2d4b9a;
+         text-shadow: 0.35vmin 0.35vmin 0 #f47a20;
+      }
+
+      .cartoon {
+         --blue: #2d4b9a;
+         --orange: #f47a20;
+         --light-orange: #ffb347;
+         --skin: #a9744a;
+         --green1: #a8d98a;
+         --green2: #7fbf63;
+         --gold: #d9b44a;
+         --black: #1b1b1b;
+         --hair: #17100a;
+         --bear: #8b5a3c;
+         --bear-light: #d9a574;
+         width: 80vmin;
+         height: 80vmin;
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+      }
+
+      .cartoon div {
+         position: absolute;
+         box-sizing: border-box;
+      }
+
+      /* BODY | wide blue and orange rugby stripes */
+      .body {
+         width: 40%;
+         height: 40%;
+         background: linear-gradient(180deg,
+            var(--orange) 0 22%,
+            var(--blue) 22% 46%,
+            var(--orange) 46% 70%,
+            var(--blue) 70%);
+         color: var(--blue);
+         border-radius: 50%;
+         top: 40%;
+         left: 50%;
+         transform: translate(-50%, 0);
+         box-shadow:
+            -4vmin 14.5vmin 0 -13vmin,
+            4vmin 14.5vmin 0 -13vmin
+      }
+
+      /* WINGS | striped sleeves */
+      .wing {
+         height: 30%;
+         width: 20%;
+         background: linear-gradient(180deg,
+            var(--blue) 0 30%,
+            var(--orange) 30% 60%,
+            var(--blue) 60%);
+         border-radius: 100% 0% 100% 5%;
+         top: 41%;
+         left: 23%;
+         transform-origin: top right;
+         transform: rotate(-10deg);
+      }
+
+      .wing+.wing {
+         left: auto;
+         right: 43%;
+         transform: scaleX(-1) rotate(-10deg);
+      }
+
+      /* GOLD CHAIN | dotted border reads as links */
+      .chain {
+         width: 12vmin;
+         height: 13vmin;
+         top: 40.5%;
+         left: 50%;
+         transform: translate(-50%, 0);
+         border: 0.9vmin dotted var(--gold);
+         border-top: 0;
+         border-radius: 0 0 50% 50% / 0 0 100% 100%;
+      }
+
+      .pendant {
+         width: 5.5vmin;
+         height: 5.5vmin;
+         top: 55.6%;
+         left: 50%;
+         transform: translate(-50%, 0);
+         border-radius: 50%;
+         background: radial-gradient(circle at 35% 30%, #fff1a8, var(--gold) 55%, #a8801f);
+         box-shadow:
+            inset 0 0 0 0.7vmin #b8902a,
+            inset 0 0 0 1.2vmin #ffe58a,
+            0 0.3vmin 0.6vmin rgba(0, 0, 0, 0.3);
+      }
+
+      /* MICROPHONE | held at the tip of the right wing.
+         Move it with left/top. The handle's bottom sits near the wing tip. */
+      .mic {
+         width: 3vmin;
+         height: 11vmin;
+         left: 68%;
+         top: 58%;
+         background: var(--black);
+         border-radius: 0.8vmin;
+         transform-origin: 50% 100%;
+         transform: rotate(15deg);
+      }
+
+      .mic::before {
+         content: "";
+         position: absolute;
+         width: 5.5vmin;
+         height: 5.5vmin;
+         left: 50%;
+         top: -4.5vmin;
+         transform: translate(-50%, 0);
+         border-radius: 50%;
+         background: linear-gradient(180deg, #151515 0 32%, #d8e24a 32% 68%, #151515 68%);
+      }
+
+      /* TEDDY BEAR HEAD | sits on the ground to the left of the left foot.
+         Its bottom edge is at 100% of the canvas, the same as the feet.
+         Move it with left. ::before and ::after are the ears. */
+      .bear {
+         width: 16%;
+         height: 14.5%;
+         top: 85.5%;
+         left: 21%;
+         background: var(--bear);
+         border-radius: 50% 50% 46% 46% / 52% 52% 48% 48%;
+      }
+
+      .bear::before,
+      .bear::after {
+         content: "";
+         position: absolute;
+         width: 4.8vmin;
+         height: 4.8vmin;
+         top: -1.8vmin;
+         border-radius: 50%;
+         background: radial-gradient(circle at 50% 55%, var(--bear-light) 0 40%, var(--bear) 42%);
+      }
+
+      .bear::before {
+         left: -0.6vmin;
+      }
+
+      .bear::after {
+         right: -0.6vmin;
+      }
+
+      .bear-eyes {
+         width: 1.4vmin;
+         height: 1.4vmin;
+         top: 36%;
+         left: 50%;
+         color: var(--black);
+         background: var(--black);
+         border-radius: 50%;
+         transform: translate(-50%, 0) translate(-2.4vmin, 0);
+         box-shadow: 4.8vmin 0
+      }
+
+      .bear-muzzle {
+         width: 42%;
+         height: 34%;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, 0);
+         background: var(--bear-light);
+         border-radius: 50%;
+      }
+
+      .bear-muzzle::before {
+         content: "";
+         position: absolute;
+         width: 34%;
+         height: 28%;
+         top: 12%;
+         left: 50%;
+         transform: translate(-50%, 0);
+         background: #2a1a10;
+         border-radius: 50% 50% 60% 60%;
+      }
+
+      .bear-muzzle::after {
+         content: "";
+         position: absolute;
+         width: 30%;
+         height: 26%;
+         top: 40%;
+         left: 50%;
+         transform: translate(-50%, 0);
+         border-bottom: 0.4vmin solid #2a1a10;
+         border-radius: 0 0 50% 50%;
+      }
+
+      /* HEAD | no clip-path, so the top is a full circle */
+      .head {
+         width: 19%;
+         height: 19%;
+         border-radius: 50%;
+         background: var(--skin);
+         top: 15%;
+         left: 50%;
+         transform: translate(-50%, 0);
+      }
+
+      .head::before {
+         content: "";
+         display: block;
+         position: absolute;
+         width: 40%;
+         height: 70%;
+         background: var(--skin);
+         top: 80%;
+         left: 50%;
+         transform: translate(-50%, 0);
+         border-radius: 0 0 100% 100% / 30%;
+      }
+
+      /* HAIR | short and cropped. The dotted texture gives it a fuzzy,
+         close-cut look. ::before and ::after are the sideburns. */
+      .hair {
+         width: 104%;
+         height: 42%;
+         top: -6%;
+         left: 50%;
+         transform: translate(-50%, 0);
+         background:
+            radial-gradient(rgba(255, 255, 255, 0.08) 0.18vmin, transparent 0.24vmin) 0 0 / 0.7vmin 0.7vmin,
+            var(--hair);
+         border-radius: 50% 50% 22% 22% / 95% 95% 30% 30%;
+      }
+
+      .hair::before,
+      .hair::after {
+         content: "";
+         position: absolute;
+         width: 9%;
+         height: 75%;
+         top: 65%;
+         background: var(--hair);
+         border-radius: 0 0 60% 60%;
+      }
+
+      .hair::before {
+         left: 4%;
+      }
+
+      .hair::after {
+         right: 4%;
+      }
+
+      .eye {
+         width: 10%;
+         height: 10%;
+         background: black;
+         border-radius: 50%;
+         top: 45%;
+         left: 50%;
+         transform: translate(-50%, 0) translate(-2.5vmin, 0);
+         box-shadow: 5vmin 0
+      }
+
+      .beak {
+         width: 4vmin;
+         height: 3vmin;
+         border-left: 4vmin solid var(--orange);
+         border-top: 1.5vmin solid transparent;
+         border-bottom: 1.5vmin solid transparent;
+         top: 60%;
+         left: 50%;
+      }
+
+      .red {
+         width: 2.5vmin;
+         height: 6vmin;
+         background: #d33;
+         border-radius: 100% / 100% 0 100% 100%;
+         top: 60%;
+         left: 50%;
+         transform: translate(-100%, 0);
+      }
+
+      /* GREEN STRIPED SHIRT peeking out of the V */
+      .tee {
+         width: 5vmin;
+         height: 6vmin;
+         top: 20.3vmin;
+         left: 50%;
+         transform: translate(-50%, 0);
+         background: repeating-linear-gradient(180deg, var(--green1) 0 0.8vmin, var(--green2) 0.8vmin 1.4vmin);
+         clip-path: polygon(0 0, 100% 0, 50% 100%);
+      }
+
+      /* WHITE COLLAR | the polygon leaves a V notch in the middle */
+      .collar {
+         width: 11vmin;
+         height: 4.5vmin;
+         top: 20vmin;
+         left: 50%;
+         transform: translate(-50%, 0);
+         background: #fff;
+         clip-path: polygon(0 0, 100% 0, 100% 45%, 62% 100%, 50% 35%, 38% 100%, 0 45%);
+      }
+
+      /* LEGS AND TOES */
+      .leg {
+         width: 3%;
+         height: 21%;
+         background: var(--orange);
+         top: 79%;
+         left: 50%;
+         transform: translate(-50%, 0) translate(-4vmin, 0);
+         border-radius: 5vmin / 50%;
+         background-image:
+            repeating-linear-gradient(transparent 0 10%, rgba(0, 0, 0, 0.1) 0 11%);
+      }
+
+      .leg+.leg {
+         transform: translate(-50%, 0) translate(4vmin, 0);
+      }
+
+      .leg::before,
+      .leg::after {
+         content: "";
+         display: block;
+         position: absolute;
+         width: 80%;
+         height: 35%;
+         left: 50%;
+         bottom: 0;
+         background: var(--orange);
+         border-radius: 5vmin;
+         transform-origin: 50% 0;
+         transform: translate(-50%, 0) rotate(30deg);
+      }
+
+      .leg::after {
+         transform: translate(-50%, 0) rotate(-30deg);
+      }
+
+      /* TAIL FEATHERS | gradient blue to orange, and orange to light orange */
+      .tail {
+         width: 10%;
+         height: 40%;
+         background: linear-gradient(to top, var(--blue), var(--orange));
+         border-radius: 100% / 30% 30% 170% 170%;
+         transform-origin: 50% 100%;
+         top: 30%;
+         left: 50%;
+         transform: translate(-50%, 0);
+      }
+
+      .tail:nth-child(odd) {
+         background: linear-gradient(to top, var(--blue), var(--orange));
+      }
+
+      .tail:nth-child(even) {
+         background: linear-gradient(to top, var(--orange), var(--light-orange));
+      }
+
+      .tail:nth-child(1) {
+         transform: translate(-50%, 0) rotate(0);
+      }
+
+      .tail:nth-child(2) {
+         transform: translate(-50%, 0) rotate(17deg);
+      }
+
+      .tail:nth-child(3) {
+         transform: translate(-50%, 0) rotate(34deg);
+      }
+
+      .tail:nth-child(4) {
+         transform: translate(-50%, 0) rotate(51deg);
+      }
+
+      .tail:nth-child(5) {
+         transform: translate(-50%, 0) rotate(68deg);
+      }
+
+      .tail:nth-child(6) {
+         transform: translate(-50%, 0) rotate(85deg);
+      }
+
+      .tail:nth-child(7) {
+         transform: translate(-50%, 0) rotate(102deg);
+      }
+
+      .tail:nth-child(8) {
+         transform: translate(-50%, 0) rotate(-17deg);
+      }
+
+      .tail:nth-child(9) {
+         transform: translate(-50%, 0) rotate(-34deg);
+      }
+
+      .tail:nth-child(10) {
+         transform: translate(-50%, 0) rotate(-51deg);
+      }
+
+      .tail:nth-child(11) {
+         transform: translate(-50%, 0) rotate(-68deg);
+      }
+
+      .tail:nth-child(12) {
+         transform: translate(-50%, 0) rotate(-85deg);
+      }
+
+      .tail:nth-child(13) {
+         transform: translate(-50%, 0) rotate(-102deg);
+      }
+   </style>
+</head>
+
+<body>
+   <h1 class="title">Kanye Breast</h1>
+   <div class="cartoon">
+      <div class="tail"></div>
+      <div class="tail"></div>
+      <div class="tail"></div>
+      <div class="tail"></div>
+      <div class="tail"></div>
+      <div class="tail"></div>
+      <div class="tail"></div>
+      <div class="tail"></div>
+      <div class="tail"></div>
+      <div class="tail"></div>
+      <div class="tail"></div>
+      <div class="tail"></div>
+      <div class="tail"></div>
+      <div class="leg"></div>
+      <div class="leg"></div>
+      <div class="bear">
+         <div class="bear-eyes"></div>
+         <div class="bear-muzzle"></div>
+      </div>
+      <div class="body"></div>
+      <div class="wing"></div>
+      <div class="wing"></div>
+      <div class="chain"></div>
+      <div class="pendant"></div>
+      <div class="mic"></div>
+      <div class="head">
+         <div class="eye"></div>
+         <div class="red"></div>
+         <div class="beak"></div>
+         <div class="tee"></div>
+         <div class="collar"></div>
+         <div class="hair"></div>
+      </div>
+   </div>
+</body>
+
+</html>
