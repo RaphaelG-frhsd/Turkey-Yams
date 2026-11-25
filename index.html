@@ -6,38 +6,96 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Kanye Breast | CSS Live Demo</title>
    <!--
-  “Thanksgiving Turkey” by Álvaro Montoro
-  https://codepen.io/alvaromontoro/pen/GRjKBvp
-  Original HTML and CSS, restyled with a striped sweater, collar,
-  hair, gold chain, microphone, a teddy bear head and a title.
+   “Thanksgiving Turkey” by Álvaro Montoro
+   https://codepen.io/alvaromontoro/pen/GRjKBvp
+   Original HTML and CSS, restyled with a striped sweater, collar,
+   hair, gold chain, microphone, a teddy bear head and a title.
 
-  MIT License
-  Copyright (c) 2020 Álvaro Montoro
+   MIT License
+   Copyright (c) 2020 Álvaro Montoro
 
-  Permission is hereby granted, free of charge, to any person obtaining
-  a copy of this software and associated documentation files (the
-  "Software"), to deal in the Software without restriction, including
-  without limitation the rights to use, copy, modify, merge, publish,
-  distribute, sublicense, and/or sell copies of the Software, and to
-  permit persons to whom the Software is furnished to do so, subject to
-  the following conditions:
+   Permission is hereby granted, free of charge, to any person obtaining
+   a copy of this software and associated documentation files (the
+   "Software"), to deal in the Software without restriction, including
+   without limitation the rights to use, copy, modify, merge, publish,
+   distribute, sublicense, and/or sell copies of the Software, and to
+   permit persons to whom the Software is furnished to do so, subject to
+   the following conditions:
 
-  The above copyright notice and this permission notice shall be
-  included in all copies or substantial portions of the Software.
+   The above copyright notice and this permission notice shall be
+   included in all copies or substantial portions of the Software.
 
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+   CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -->
    <style>
       html,
       body {
          overflow: hidden;
-         background: #fee;
+         background: #e8d6b5;
+      }
+
+      /* COLLEGE DROPOUT INSPIRED BACKGROUND */
+      body {
+         background:
+            radial-gradient(ellipse at center, #f5e8ce 0%, #e8d2ac 55%, #b89569 100%);
+      }
+
+      /* AUDITORIUM WALLS AND ARCHES */
+      body::before {
+         content: "";
+         position: fixed;
+         inset: 0;
+         z-index: -1;
+         background:
+            /* center stage lighting */
+            radial-gradient(ellipse at 50% 48%, rgba(255, 244, 215, 0.95), transparent 48%),
+
+            /* architectural arches */
+            radial-gradient(ellipse at 50% 110%, transparent 0 48%, #513626 49% 53%, transparent 54%),
+            radial-gradient(ellipse at 50% 110%, transparent 0 58%, #785137 59% 64%, transparent 65%),
+
+            /* side columns */
+            linear-gradient(90deg,
+               #422b20 0%,
+               #68472e 8%,
+               #98714b 12%,
+               #d4b68a 15%,
+               transparent 20%,
+               transparent 80%,
+               #d4b68a 85%,
+               #98714b 88%,
+               #68472e 92%,
+               #422b20 100%),
+
+            /* auditorium background */
+            linear-gradient(180deg, #593b29 0%, #936c46 40%, #c7a77b 100%);
+      }
+
+      /* VINTAGE TEXTURE + LIGHTING */
+      body::after {
+         content: "";
+         position: fixed;
+         inset: 0;
+         pointer-events: none;
+         z-index: 10;
+
+         background:
+            repeating-linear-gradient(
+               0deg,
+               rgba(60, 35, 15, 0.025) 0px,
+               rgba(60, 35, 15, 0.025) 1px,
+               transparent 2px,
+               transparent 4px
+            ),
+            radial-gradient(ellipse at center,
+               transparent 55%,
+               rgba(48, 27, 15, 0.22) 100%);
       }
 
       /* TITLE | fixed at the top center of the window */
@@ -52,7 +110,9 @@
          letter-spacing: 0.4vmin;
          text-transform: uppercase;
          color: #2d4b9a;
-         text-shadow: 0.35vmin 0.35vmin 0 #f47a20;
+         text-shadow:
+            0.35vmin 0.35vmin 0 #f47a20,
+            0.7vmin 0.7vmin 0 rgba(0, 0, 0, 0.2);
       }
 
       .cartoon {
@@ -316,6 +376,38 @@
          box-shadow: 5vmin 0
       }
 
+      /* BLACK SUNGLASSES */
+      .sunglasses {
+         width: 60%;
+         height: 22%;
+         top: 43%;
+         left: 50%;
+         transform: translate(-50%, 0);
+         background: linear-gradient(#111 0 0) center 45% / 20% 18% no-repeat;
+         z-index: 2;
+      }
+
+      .sunglasses::before,
+      .sunglasses::after {
+         content: "";
+         position: absolute;
+         width: 42%;
+         height: 90%;
+         top: 0;
+         background: linear-gradient(145deg, #333, #050505 45%, #181818);
+         border: 0.45vmin solid #080808;
+         border-radius: 20% 20% 45% 45%;
+         box-sizing: border-box;
+      }
+
+      .sunglasses::before {
+         left: 0;
+      }
+
+      .sunglasses::after {
+         right: 0;
+      }
+
       .beak {
          width: 4vmin;
          height: 3vmin;
@@ -503,6 +595,7 @@
          <div class="tee"></div>
          <div class="collar"></div>
          <div class="hair"></div>
+         <div class="sunglasses"></div>
       </div>
    </div>
 </body>
